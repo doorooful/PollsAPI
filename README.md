@@ -67,3 +67,6 @@ access server from, http://127.0.0.1:5000/{endpoint_URL}
         "vote": "apple"
     }
     ```
+   <img width="1256" alt="KakaoTalk_20230423_161859583" src="https://user-images.githubusercontent.com/117963984/233825820-7c691cdb-da63-4b84-b0e2-e8fe198559f0.png">
+
+   
