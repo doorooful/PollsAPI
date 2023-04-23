@@ -10,12 +10,13 @@
 1. Create virtual environment under /PollsAPI:  
 `% python3 -m venv .venv`  
 2. Activate virtual environment:  
-`% source .venv/bin/activate`
+    - mac: `% source .venv/bin/activate`
+    - windows: 
 3. Upgrade Pip:  
 `(.venv) % pip install --upgrade pip`
 4. Install Flask package:  
 `(.venv) % pip install Flask`
-5. Verify Flask package:  
+5. (Option) Verify Flask package:  
 `(.venv) % flask --version`
 6. Run server:  
 `(.venv) % python app.py`
