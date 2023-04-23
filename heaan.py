@@ -71,11 +71,11 @@ class Heaan():
     
     def isSame(self, ciphertext1, ciphertext2):
         heaan_result = heaan.Ciphertext(self.context)
-        approx.compare(self.eval, ciphertext1, ciphertext2, heaan_result)
+        approx.discrete_equal(self.eval, ciphertext1, ciphertext2, heaan_result)
         sk = heaan.SecretKey(self.context, self.path+"/secretkey.bin")
         result = heaan.Message(self.log_slot)
         self.dec.decrypt(heaan_result, sk, result)
-        return True if self.pretty(result) == 0.5 else False
+        return True if self.pretty(result) == 1 else False
     
     def pretty(self, heaanresult):
         pretty = str(heaanresult)
