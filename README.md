@@ -56,3 +56,14 @@ access server from, http://127.0.0.1:5000/{endpoint_URL}
         "vote": "Option1"
     }
     ```
+    
+###  How to change Option name?
+1. Change setOption = ["Option1", "Option2", "Option3"] to setOption = ["apple", "banana", "cookie","drinks"] 
+   - any number of options, and any characters can used.
+2. User must send option name in POST request to a character that include in setOption.
+    ``` json
+    {
+        "sender": "Evi",
+        "vote": "apple"
+    }
+    ```
