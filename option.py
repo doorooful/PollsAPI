@@ -10,15 +10,18 @@ class Option():
         self.initialVote=0
     
     def initialize(self):
-        self.setOptionDict()
+        self.setOptionDict(self.select_rand())
         self.setOptionList()
 
-    # TODO: change indices in random numbers
-    def setOptionDict(self):
+    def select_rand(self):
+        rands = random.sample(range(1, 100), self.options)
+        return rands
+
+    def setOptionDict(self, rand_nums):
         self.optionDict = {
-            "Option1": 1,
-            "Option2": 2,
-            "Option3": 3
+            "Option1": rand_nums[0],
+            "Option2": rand_nums[1],
+            "Option3": rand_nums[2]
             }
 
     # TODO: change option name from option dictionary
