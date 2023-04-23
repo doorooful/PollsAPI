@@ -2,36 +2,32 @@ from heaan import Heaan
 import random
 
 class Option():
-    def __init__(self, options, heaan:Heaan):
-        self.optionDict=None # Option indicies reference dictionary
-        self.optionList=None # Option list
-        self.options=options # Number of options (i.e. if a,b,c then 3)
+    def __init__(self, heaan:Heaan):
+        self.optionDict={} # Option indicies reference dictionary
+        self.optionList=[] # Option list
+        self.options=[] # List of options(i.e. ["Option1", "Option2", "Option3"])
         self.heaan=heaan
         self.initialVote=0
     
-    def initialize(self):
-        self.setOptionDict(self.select_rand())
+    def initialize(self, options):
+        self.options=options
+        self.setOptionDict(self.select_rand(len(options)))
         self.setOptionList()
 
-    def select_rand(self):
-        rands = random.sample(range(1, 100), self.options)
+    def select_rand(self, length):
+        rands = random.sample(range(1, 100), length)
         return rands
 
+    # Sets option dictionary with given options and random indicies
     def setOptionDict(self, rand_nums):
-        self.optionDict = {
-            "Option1": rand_nums[0],
-            "Option2": rand_nums[1],
-            "Option3": rand_nums[2]
-            }
+        length = len(self.options)
+        for i in range(length):
+            self.optionDict[self.options[i]]=rand_nums[i]
 
-    # TODO: change option name from option dictionary
-    # Create optionlist which has encrypted data from option dictionary
+    # Sets option list which has encrypted sets of values of each options' indices and vote score(initially 0 score)
     def setOptionList(self):
-        self.optionList = [
-        [self.heaan.encrypt(self.optionDict["Option1"]), self.heaan.encrypt(self.initialVote)],
-        [self.heaan.encrypt(self.optionDict["Option2"]), self.heaan.encrypt(self.initialVote)],
-        [self.heaan.encrypt(self.optionDict["Option3"]), self.heaan.encrypt(self.initialVote)]
-        ]
+        for key, val in self.optionDict.items():
+            self.optionList.append([self.heaan.encrypt(val), self.heaan.encrypt(self.initialVote)])
 
     def vote(self, vote):
         for o in self.optionList:
