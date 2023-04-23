@@ -16,8 +16,8 @@ class Heaan():
         self.dec = None
         self.enc = None
         self.path = "./keys"
-        ## TODO: verify if this is not neccessary to be shared
 
+    # Initializes necessary values
     def initialize(self):
         self.params = heaan.ParameterPreset.FGb
         self.context = heaan.make_context(self.params)
@@ -63,12 +63,15 @@ class Heaan():
         self.eval.add(ciphertext1, ciphertext2, result)
         return result
     
+    # From ciphertext, get plaintext
     def decrypt(self, ciphertext):
         result = heaan.Message(self.log_slot)
         sk = heaan.SecretKey(self.context, self.path+"/secretkey.bin")
         self.dec.decrypt(ciphertext, sk, result)
         return result
     
+    # Returns true if given two ciphertexts are same
+    # From our case, this is used to find the sublist from optionList(sublists are shuffled all times)
     def isSame(self, ciphertext1, ciphertext2):
         heaan_result = heaan.Ciphertext(self.context)
         approx.discrete_equal(self.eval, ciphertext1, ciphertext2, heaan_result)
@@ -77,6 +80,7 @@ class Heaan():
         self.dec.decrypt(heaan_result, sk, result)
         return True if self.pretty(result) == 1 else False
     
+    # Extract real number part from heaan result
     def pretty(self, heaanresult):
         pretty = str(heaanresult)
         pretty = pretty.replace("[ (","")
