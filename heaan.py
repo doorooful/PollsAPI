@@ -70,15 +70,20 @@ class Heaan():
         self.dec.decrypt(ciphertext, sk, result)
         return result
     
-    # Returns true if given two ciphertexts are same
-    # From our case, this is used to find the sublist from optionList(sublists are shuffled all times)
-    def isSame(self, ciphertext1, ciphertext2):
-        heaan_result = heaan.Ciphertext(self.context)
-        approx.discrete_equal(self.eval, ciphertext1, ciphertext2, heaan_result)
-        sk = heaan.SecretKey(self.context, self.path+"/secretkey.bin")
-        result = heaan.Message(self.log_slot)
-        self.dec.decrypt(heaan_result, sk, result)
-        return True if self.pretty(result) == 1 else False
+    # From given optionList and user's input,
+    # returns updated list.
+    # Regarding that discrete_equal returns 1 if the given parameters are same,
+    # this method would add 1 for each vote score if the index of the option and user's input are same.
+    def updateVote(self, optionList, ciphertext):
+        updatedList = []
+        for o in optionList:
+            heaan_result = heaan.Ciphertext(self.context)
+            approx.discrete_equal(self.eval, o[0], ciphertext, heaan_result)
+            o[1] = self.add(o[1], heaan_result)
+            updatedList.append(o)
+            print(self.decrypt(o[0]))
+            print(self.decrypt(o[1]))
+        return updatedList
     
     # Extract real number part from heaan result
     def pretty(self, heaanresult):
@@ -102,7 +107,3 @@ class Heaan():
 
 # print("result is", myHeaan.decrypt(myadd2))
 # print("pretty is", myHeaan.pretty(myHeaan.decrypt(myadd2)))
-
-# print("compare 1 and 2", myHeaan.isSame(mycipher1, mycipher2))
-# print("compare 1 and 1", myHeaan.isSame(mycipher1, mycipher1)) # same
-# print("compare 2 and 1", myHeaan.isSame(mycipher2, mycipher1))
