@@ -1,20 +1,40 @@
-# Setup(mac)
+# Setup
 
-1. Install Node.js
+## 1. Install Node.js
 
--`% brew install node`
+### Mac
+`% brew install node`
 
-2. Verify
+### Windows
+[Download from the official website](https://nodejs.org/en)
 
--`% node`
+## 2. Verify
 
-3. Initialize Node.js
+### Mac
+- `% node`
 
--`%cd demo/`  
--`%npm init`  
--`%npm install express`  
--`%npm install ejs`
+### Windows
+- `> node --version`
 
-4. Run server
+## 3. Initialize Node.js
 
--`%node demo/app.js` (if you are under PollsAPI/)
+### Mac
+- `%cd demo/`  
+- `%npm init`  
+- `%npm install express`  
+- `%npm install ejs`
+
+### Windows
+- `> cd .\demo\`
+- `> npm init`
+- `> npm install express`
+- `> npm install ejs`
+
+## 4. Run server
+
+### Mac
+- `%node demo/app.js` (if you are under PollsAPI/)
+
+### Windows
+- `> cd .\demo\` (only if not yet done)
+- `> node .\app.js`
