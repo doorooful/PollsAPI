@@ -2,11 +2,14 @@ const http = require('http');
 const express = require('express');
 const ejs = require('ejs');
 
+// TODO: change hostname by checking actual IP
 const hostname = '127.0.0.1';
 const port = 3000;
 
 const app = express();
 const server = http.createServer(app);
+
+const {setOptionList, addVote, getResult} = require("./apiRequest.js");
 
 app.set('view engine', 'ejs');
 app.set('views', './views');
