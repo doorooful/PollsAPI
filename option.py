@@ -14,6 +14,7 @@ class Option():
     # Here option dictionary gets random indicies for all options.
     # Then option list will created with encrypted indicies and score(initially 0)
     def initialize(self, options):
+        self.options=[]
         self.options=options
         self.setOptionDict(self.select_rand(len(options)))
         self.setOptionList()
@@ -49,11 +50,20 @@ class Option():
                 return key
     
     # print optionList in plaintext
-    # This function is for debugging purpose
-    def get_pretty_result(self):
+    # After getting result(heaan decryption), optionList would be initilized
+    def get_result(self):
         pretty = []
         for l in self.optionList:
             dict_key = self.findOption(l[0])
             dict_val = self.heaan.pretty(self.heaan.decrypt(l[1]))
             print(dict_key, dict_val)
+            pretty.append([dict_key, dict_val])
+        self.optionList = []
         return dict(pretty)
+    
+    # Debugging method
+    def get_pretty_result(self):
+        for l in self.optionList:
+            dict_key = self.findOption(l[0])
+            dict_val = self.heaan.pretty(self.heaan.decrypt(l[1]))
+            print(dict_key, dict_val)
