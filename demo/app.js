@@ -50,6 +50,30 @@ app.post('/userVote', (req, res) => {
     res.json({ message: 'Vote added successfully' });
   });
 
+app.get('/result', async (req, res) => {
+    try {
+        const result = await finishResult();
+        console.log("result is (from app.js): ", result);
+        res.render('result', {result}, function(err, html) {
+            if(err) {
+                console.log(err);
+            }
+            res.end(html);
+        });
+    } catch (error) {
+        console.error('An error occurred:', error);
+    }
+});
+
+async function finishResult() {
+    try {
+        const result = await getResult(); // Wait for getResult to finish and store the result
+        return result; // Return the result
+    } catch (error) {
+      console.error('Error occured on getting result:', error);
+    }
+}
+
 app.listen(port, hostname, () => {
 	console.log(`Server running at http://${hostname}:${port}`);
 });

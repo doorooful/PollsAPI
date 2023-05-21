@@ -58,6 +58,9 @@
                     <button type="button" class="btn btn-primary" onclick="castVote()">Vote</button>
                 </div>
             </div>
+            <div class="text-right mt-3">
+                <button type="button" class="btn btn-secondary" onclick="result()">Result</button>
+            </div>
         </div>
 
         <!--Modal-->
@@ -103,6 +106,11 @@
                         .then(data => { console.log(data); })
                         .catch(error => { console.error(error); });
                 }
+            }
+
+            function result(){
+                console.log("result function");
+                window.location.href = '/result';
             }
         </script>
     </body>
