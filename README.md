@@ -5,6 +5,16 @@ This API mainly provides **voting**, **setting options**, **getting results**.
 
 ## <Overview>
 
+### API Documentation
+
+| URL            | Method | Request Body              | Response                        |
+| -------------- | ------ | ------------------------- | ------------------------------- |
+| /voting        | POST   | { "vote": "Option1" }     | "voted!"                        |
+| /setOptionList | POST   | { "1": "yes", "2": "no" } | Given options are ["yes", "no"] |
+| /result        | GET    |                           | { "yes": 2, "no": 0}            |
+
+### Description
+
 **Relevance of Online Voting**  
 Voting is an essential part of democracy.  
 Currently voting is done with paper, either in a voting booth or by post.  
