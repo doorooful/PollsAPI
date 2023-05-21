@@ -40,6 +40,8 @@
 
 ## 4. Run server
 
+_Note that API server should run prior before running the demo web app_
+
 ### Mac
 
 - `%cd demo/`
@@ -78,4 +80,14 @@ async function performRequests() {
 }
 performRequests();
 
+```
+
+## Changing server IP
+
+If you'd like to run the server in your own IP address,
+change the hostname from app.js
+
+```javascript
+// TODO: put your IP address here.
+const hostname = "127.0.0.1";
 ```
