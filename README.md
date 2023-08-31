@@ -92,3 +92,6 @@ Therefore even if data leakage occurs, confidentility can be assured.
 ### How to get results?
 
 - Send GET request to `http://127.0.0.1/result`
+
+https://github.com/doorooful/PollsAPI/assets/110809138/fe39804a-966b-4794-93a5-a5ac6de05ab4
+
